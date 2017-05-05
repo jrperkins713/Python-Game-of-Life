@@ -7,11 +7,13 @@ Created on Tue May  2 10:33:20 2017
 from tkinter import *
 
 def main():
+    GRID_HEIGHT = 30
+    GRID_WIDTH = 50
     root = Tk()
     frame=Frame(root)
     frame.grid(row=0,column=0)
     
-    btn=  [[0 for x in range(30)] for x in range(50)] 
+    btn=  [[0 for x in range(GRID_HEIGHT)] for x in range(GRID_WIDTH)] 
     createWidgets(root,frame, btn)
     
     root.mainloop()
@@ -19,8 +21,8 @@ def main():
     
     
 def createWidgets(root,frame, btn):
-    for x in range(50):
-         for y in range(30):
+    for x in range(GRID_WIDTH):
+         for y in range(GRID_HEIGHT):
             btn[x][y] = [Button(frame,command= lambda x1=x, y1=y: color_change(btn,x1,y1),width = 2), "dead"]
             btn[x][y][0].grid(column=x, row=y)
     
@@ -42,8 +44,8 @@ def playOrStop():
     
 def playGame(btn):
     nextMove = btn
-    for x in range(50):
-        for y in range(30):
+    for x in range(GRID_WIDTH):
+        for y in range(GRID_HEIGHT):
             adjacent = 0 
             for i in range(x-1, x+2):
                 for j in range(y-1,y+2):
