@@ -7,8 +7,8 @@ Created on Tue May  2 10:33:20 2017
 from tkinter import *
 def main():
     global GRID_WIDTH, GRID_HEIGHT
-    GRID_WIDTH = 50
-    GRID_HEIGHT = 30
+    GRID_WIDTH = 20
+    GRID_HEIGHT = 20
     root = Tk()
     frame=Frame(root)
     frame.grid(row=0,column=0)
