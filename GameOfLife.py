@@ -50,7 +50,7 @@ def playGame(btn):
             for i in range(x-1, x+2):
                 for j in range(y-1,y+2):
                     
-                    if i < 50 and i >= 0 and j >=0 and j < 30:
+                    if i < GRID_WIDTH and i >= 0 and j >=0 and j < GRID_HEIGHT:
                         if btn[i][j][1] == "alive" and btn[i][j] != btn[x][y]:
                             adjacent += 1
             if adjacent == 1:                           
