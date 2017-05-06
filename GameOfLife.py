@@ -6,6 +6,7 @@ Created on Tue May  2 10:33:20 2017
 """
 from tkinter import *
 def main():
+    global GRID_WIDTH, GRID_HEIGHT
     GRID_WIDTH = 50
     GRID_HEIGHT = 30
     root = Tk()
@@ -69,4 +70,5 @@ def playGame(btn):
                 btn[x][y][0].config(bg="white")
                 
 main()
+
 
