@@ -4,6 +4,12 @@ Created on Tue May  2 10:33:20 2017
 
 @author: Joseph Perkins
 """
+# -*- coding: utf-8 -*-
+"""
+Created on Tue May  2 10:33:20 2017
+
+@author: Joseph Perkins
+"""
 from tkinter import *
 def main():
     global GRID_WIDTH, GRID_HEIGHT
@@ -25,20 +31,20 @@ def main():
 def createWidgets(root,frame, btn):
     for x in range(GRID_WIDTH):
          for y in range(GRID_HEIGHT):
-            btn[x][y] = [Button(frame,command= lambda x1=x, y1=y: color_change(btn,x1,y1),width = 2), "dead"]
-            btn[x][y][0].grid(column=x, row=y)
+            btn[x][y] = Button(frame, bg ="white",command= lambda x1=x, y1=y: color_change(btn,x1,y1),width = 2)
+            btn[x][y].grid(column=x, row=y)
 
     play = Button(frame, command = lambda: playGame(btn), text = "Play", width = 6, height = 2)
     play.grid(row = 40, column = x+5)
 
 
 def color_change(btn, x,y):
-    if btn[x][y][1] == "dead":
-        btn[x][y][0].config(bg="black")
-        btn[x][y][1] = "alive"
+    if btn[x][y].cget("bg") == "white":
+        btn[x][y].config(bg="black")
+        
     else:
-        btn[x][y][0].config(bg="white")
-        btn[x][y][1] = "dead"
+        btn[x][y].config(bg="white")
+        
 
 
 def playOrStop():
@@ -47,35 +53,32 @@ def playOrStop():
 
 
 def playGame(btn):
-    """
-    nextMove = btn
-    for x in range(GRID_WIDTH):
-        for y in range(GRID_HEIGHT):
-            adjacent = 0
-            for i in range(x-1, x+2):
-                for j in range(y-1,y+2):
-
-                    if i < GRID_WIDTH and i >= 0 and j >=0 and j < GRID_HEIGHT:
-                        if btn[i][j][1] == "alive" and btn[i][j] != btn[x][y]:
-                            adjacent += 1
-            if adjacent == 1:
-                nextMove[x][y][1] ="alive"
-                print("durp")
-            else:
-                nextMove[x][y][1] = "dead"
-
-    btn = nextMove
-    for x in range(GRID_WIDTH):
-        for y in range(GRID_HEIGHT):
-            if btn[x][y][1] == "alive":
-                btn[x][y][0].config(bg="black")
-            else:
-                btn[x][y][0].config(bg="white")
-                """
-    test_game_state_step()
+    booleanGrid = convertToBoolean(btn)
+    nxtbooleans = game_state_step(booleanGrid)
+    convertToGrid(btn,nxtbooleans)
+    
+    
 
 
 # Game state as [[Bool]]
+def convertToBoolean(btn):
+    grid = [[False for i in range(len(btn))]for j in range(len(btn[0]))]
+    for x in range(GRID_WIDTH):
+        for y in range(GRID_HEIGHT):
+            if btn[x][y].cget("bg") == "black":
+                grid[x][y] = True
+    return grid
+
+def convertToGrid(btn,grid):
+    
+    for x in range(len(grid)):
+        for y in range(len(grid[0])):
+            if grid[x][y] == True:
+                btn[x][y].config(bg="black")
+            else:
+                btn[x][y].config(bg="white")
+    return btn
+
 
 def game_state_step(game_state):
     '''Returns a new game state as double list, [[Bool]].'''
@@ -88,7 +91,7 @@ def game_state_step(game_state):
                     if i < len(game_state) and i >= 0 and j >=0 and j < len(game_state[0]):
                         if game_state[i][j] == True and not (x==i and y== j):
                             adjacent +=1
-            print(x,y, adjacent)
+            
                             
             if game_state[x][y] == True:
                 if adjacent == 3 or adjacent == 2:
@@ -138,3 +141,4 @@ def test_game_state_step():
 
 
 main()
+
