@@ -16,6 +16,9 @@ def main():
     btn=  [[0 for x in range(GRID_HEIGHT)] for x in range(GRID_WIDTH)]
     createWidgets(root,frame, btn)
 
+    #nxt=  [[0 for x in range(GRID_HEIGHT)] for x in range(GRID_WIDTH)]
+    #createWidgets(root,frame, nxt) # no display
+
     root.mainloop()
 
 
@@ -67,6 +70,40 @@ def playGame(btn):
                 btn[x][y][0].config(bg="black")
             else:
                 btn[x][y][0].config(bg="white")
+
+
+# Game state as [[Bool]]
+
+def game_state_step(game_state):
+    '''Returns a new game state as double list, [[Bool]].'''
+    return [[]] # TODO
+
+
+def test_game_state_step():
+    '''Tests the game_state_step function!'''
+    state1 = (
+        [[False, False, False, False, False, False],
+         [False, False, False, True,  False, False],
+         [False, True,  False, True,  False, False],
+         [False, False, True,  True,  False, False],
+         [False, False, False, False, False, False],
+         [False, False, False, False, False, False]])
+    expected_state2 = (
+        [[False, False, False, False, False, False],
+         [False, False, True,  False, False, False],
+         [False, False, False, True,  True,  False],
+         [False, False, True,  True,  False, False],
+         [False, False, False, False, False, False],
+         [False, False, False, False, False, False]])
+    state2 = game_state_step(state1)
+    # Compare the result
+    height = len(state1) # Should be 6
+    width = len(state1[0]) # Should be 6
+    for y in range(0, height):
+        for x in range(0, width):
+            if expected_state2[y][x] != state2[y][x]:
+                print("TEST FAILED!")
+                return
 
 
 main()
