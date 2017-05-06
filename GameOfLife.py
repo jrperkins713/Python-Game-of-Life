@@ -47,6 +47,7 @@ def playOrStop():
 
 
 def playGame(btn):
+    """
     nextMove = btn
     for x in range(GRID_WIDTH):
         for y in range(GRID_HEIGHT):
@@ -70,13 +71,37 @@ def playGame(btn):
                 btn[x][y][0].config(bg="black")
             else:
                 btn[x][y][0].config(bg="white")
+                """
+    test_game_state_step()
 
 
 # Game state as [[Bool]]
 
 def game_state_step(game_state):
     '''Returns a new game state as double list, [[Bool]].'''
-    return [[]] # TODO
+    nxt = [[False for j in range(len(game_state))] for j in range(len(game_state[0]))]
+    for x in range(len(game_state)):
+        for y in range(len(game_state[0])):
+            adjacent = 0
+            for i in range(x-1, x+2):
+                for j in range(y-1,y+2):
+                    if i < len(game_state) and i >= 0 and j >=0 and j < len(game_state[0]):
+                        if game_state[i][j] == True and not (x==i and y== j):
+                            adjacent +=1
+            print(x,y, adjacent)
+                            
+            if game_state[x][y] == True:
+                if adjacent == 3 or adjacent == 2:
+                    nxt[x][y] = True
+                else:
+                    nxt[x][y] = False
+            else:
+                if adjacent == 3:
+                    nxt[x][y] = True
+                else:
+                    nxt[x][y] = False
+                               
+    return nxt # TODO
 
 
 def test_game_state_step():
@@ -103,6 +128,7 @@ def test_game_state_step():
         for x in range(0, width):
             if expected_state2[y][x] != state2[y][x]:
                 print("TEST FAILED!")
+                print(state2)
                 return
 
 
