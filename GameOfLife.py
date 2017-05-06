@@ -96,13 +96,18 @@ def test_game_state_step():
          [False, False, False, False, False, False],
          [False, False, False, False, False, False]])
     state2 = game_state_step(state1)
-    # Compare the result
-    height = len(state1) # Should be 6
-    width = len(state1[0]) # Should be 6
-    for y in range(0, height):
-        for x in range(0, width):
+    # Check lengths
+    height = len(state1)
+    width = len(state1[0])
+    next_height = len(state2)
+    next_width = len(state2[0])
+    if height != next_height or width != next_height:
+        print("TEST FAILED! Length mismatch!")
+        return
+    for y in range(height):
+        for x in range(width):
             if expected_state2[y][x] != state2[y][x]:
-                print("TEST FAILED!")
+                print("TEST FAILED! Bad cell value @ ({}, {})!".format(x, y))
                 return
 
 
