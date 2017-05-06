@@ -19,7 +19,6 @@ def main():
     root.mainloop()
 
 
-
 def createWidgets(root,frame, btn):
     for x in range(GRID_WIDTH):
          for y in range(GRID_HEIGHT):
@@ -38,9 +37,11 @@ def color_change(btn, x,y):
         btn[x][y][0].config(bg="white")
         btn[x][y][1] = "dead"
 
+
 def playOrStop():
     pass
     #later make a button to play and stop during the simulation
+
 
 def playGame(btn):
     nextMove = btn
@@ -59,8 +60,6 @@ def playGame(btn):
             else:
                 nextMove[x][y][1] = "dead"
 
-
-
     btn = nextMove
     for x in range(GRID_WIDTH):
         for y in range(GRID_HEIGHT):
@@ -68,5 +67,6 @@ def playGame(btn):
                 btn[x][y][0].config(bg="black")
             else:
                 btn[x][y][0].config(bg="white")
+
 
 main()
