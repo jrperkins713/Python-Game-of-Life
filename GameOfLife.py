@@ -11,10 +11,11 @@ Created on Tue May  2 10:33:20 2017
 @author: Joseph Perkins
 """
 from tkinter import *
+import time
 def main():
     global GRID_WIDTH, GRID_HEIGHT
-    GRID_WIDTH = 20
-    GRID_HEIGHT = 20
+    GRID_WIDTH = 30
+    GRID_HEIGHT = 30
     root = Tk()
     frame=Frame(root)
     frame.grid(row=0,column=0)
@@ -55,7 +56,8 @@ def playOrStop():
 def playGame(btn):
     booleanGrid = convertToBoolean(btn)
     nxtbooleans = game_state_step(booleanGrid)
-    convertToGrid(btn,nxtbooleans)
+    btn=convertToGrid(btn,nxtbooleans)
+    
     
     
 
