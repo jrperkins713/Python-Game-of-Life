@@ -16,14 +16,11 @@ value is determined by it's neighbors: The eight cells adjacent and diagonal, al
 All rules are applied to all cells simultaneously. Kind of like if at each time step, the old grid
 is frozen, and a brand-new grid is calculated just by referencing the old grid.
 
-It's cool because from these simple rules, complex patterns and automatons can emerge. You may be
-familiar with the [Glider][glider], but did you know that the **Game of Life** is also
-[Turing complete][turing_complete]? You can simulate a computer just by arranging cells on the grid!
-Crazy, right?!
+
 
 
 
 [game_of_life]: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 [neighborhood]: https://en.wikipedia.org/wiki/Moore_neighborhood
 [glider]: https://en.wikipedia.org/wiki/Glider_%28Conway%27s_Life%29
-[turing_complete]: https://en.wikipedia.org/wiki/Turing_completeness
+
