@@ -13,8 +13,17 @@ value is determined by it's neighbors: The eight cells adjacent and diagonal, al
   3. If a cell has more than three live neighbors, it dies (over-population)
   4. If a dead cell has exactly three live neighbors, it becomes alive (reproduction)
 
-All rules are applied to all cells simultaneously. Kind of like if at each time step, the old grid
-is frozen, and a brand-new grid is calculated just by referencing the old grid.
+All rules are applied to all cells simultaneously. At each time step, the old grid
+is frozen, and a new grid is calculated from the old grid.
+
+## Instructions ##
+* Click buttons on the grid to toggle them on or off
+* Click the PLAY button to advance the grid one step
+* Arrange cells in patterns to achieve interesting results
+* Experiment!
+
+## Screenshot ##
+!["Gameplay Screenshot"](GameOfLifeGameplay.png?raw=true "Title")
 
 
 
